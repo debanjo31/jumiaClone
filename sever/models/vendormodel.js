@@ -6,7 +6,7 @@ const vendorSchema = new Schema({
     type: String,
     required: [true, 'Please provide your first name'],
   },
-lastName: {
+  lastName: {
     type: String,
     required: [true, 'Please provide a last name'],
   },
