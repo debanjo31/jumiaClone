@@ -2,47 +2,52 @@ import  {Schema, model} from 'mongoose';
 import mongoose from 'mongoose';
 
 const vendorSchema = new Schema({
-  firstName: {
+  shopName: {
     type: String,
     required: [true, 'Please provide your first name'],
-  },
-  lastName: {
-    type: String,
-    required: [true, 'Please provide a last name'],
   },
   password: {
     type: String,
     required: [true, 'Please provide a password'],
   },
-  phoneNumber: {
-    type: String,
-    required: [true, 'Please provide a contact phone number'],
-  },
-  additionPhoneNumber : {
-    type: String,
-  },
-  email: {
-    type: String,
-    required: [true, 'Please provide a valid email address'],
-    lowercase: true,
-    unique: true,
-  },
-  isEmailConfirmed: {
-    type: Boolean,
-    default: false,
-  },
-  gender: {
-    type: String,
-    enum : {
-      values: ["male", "female"],
-      message: 'gender not supported'
+  shopInfo : [{
+    accountType: {
+      type: String,
+      enum : {
+        values: ["business", "individual"],
+        message: 'supported'
+      },
+      required: [true, 'Please provide your gender'],
     },
-    required: [true, 'Please provide your gender'],
-  },
-  dob : {
-    type : Date,
-    required: [true, 'Please provide your date of birth'],
-  },
+    shopZone: {
+      type: String,
+      required: [true, 'business state'],
+    },
+    shopAddress: {
+      type: String,
+      required: [true, 'business address'],
+    },
+  }],
+  businessInfo : [{
+    ownerName : {
+      type: String,
+    },
+    ownerTaxId : {
+      type: String,
+    },
+    ownerAddress : {
+      type: String,
+    },
+    ownerPhone : {
+      type: String,
+    },
+    ownerId : {
+      type: String,
+    },
+    ownerIdNumber : {
+      type: String,
+    },
+  }],
   addressBook : [{
     address: {
       type: String,
